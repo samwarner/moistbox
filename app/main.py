@@ -1,5 +1,7 @@
-import bme680
 import time
+
+def main():
+    print("Thanks.")
 
 
 if __name__ == "__main__":
