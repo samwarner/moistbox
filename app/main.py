@@ -19,11 +19,11 @@ def main():
     try:
         while True:
             if sensor.get_sensor_data():
-                now = maya.MayaDT.from_struct(time.gmtime())
+                now = maya.now()
                 t = sensor.data.temperature
                 h = sensor.data.humidity
                 p = sensor.data.pressure
-                output = f"{now} - Temp: {t:.2f} C, Hum: {h:.2f} HU, Pres: {p:.2f} hPa."
+                output = f"{now.rfc2822()} - Temp: {t:.2f} C, Hum: {h:.2f} HU, Pres: {p:.2f} hPa."
 
                 print(output)
 
