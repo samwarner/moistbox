@@ -19,17 +19,15 @@ def main():
     try:
         while True:
             if sensor.get_sensor_data():
-                now = maya.now()
+                now = maya.MayaDT(time.time())
                 t = sensor.data.temperature
                 h = sensor.data.humidity
                 p = sensor.data.pressure
-                output = f"""
-                        {now:10} Temp.: {t:.2f} C, Hum.: {h:.2f} HU, Pres.: {p:.2f} hPa.
-                        """
+                output = f"{now} - Temp:{t:.2f} C, Hum:{h:.2f} HU, Pres:{p:.2f} hPa."
 
-            print(output)
+                print(output)
 
-            time.sleep(60)
+                time.sleep(60)
 
     except KeyboardInterrupt:
         pass
