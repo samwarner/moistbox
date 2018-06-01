@@ -1,4 +1,5 @@
 import time
+import datatime
 import bme680
 
 
@@ -13,13 +14,21 @@ def main():
     sensor.set_temperature_oversample(bme680.OS_8X)
     sensor.set_filter(bme680.FILTER_SIZE_3)
 
-    print("Poling:")
+    print("Polling:")
     try:
         while True:
             if sensor.get_sensor_data():
-                output = f"Temp.: {sensor.data.temperature:.2f} C, Hum.: {sensor.data.pressure:.2f} HU, Pres.: {sensor.data.humidity:.2f} hPa."
+                n = datetime.fromtimestamp(timestamp, timezone.utc)
+                t = sensor.data.temperature
+                h = sensor.data.humidity
+                p = sensor.data.pressure
+                output = f"""
+                        {n:10} Temp.: {t:.2f} C, Hum.: {h:.2f} HU, Pres.: {p:.2f} hPa.
+                        """
 
             print(output)
+
+            time.sleep(60)
 
     except KeyboardInterrupt:
         pass
