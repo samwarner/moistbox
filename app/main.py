@@ -1,5 +1,5 @@
 import time
-import datatime
+import datetime
 import bme680
 
 
