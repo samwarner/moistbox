@@ -17,14 +17,11 @@ def main():
     try:
         while True:
             if sensor.get_sensor_data():
-                output = f"""Temp.: 
-                    {sensor.data.temperature} C, 
-                    Hum.: {sensor.data.pressure} HU, 
-                    Pres.: {sensor.data.humidity} hPa."""
+                output = f"Temp.: {sensor.data.temperature%.f2} C, Hum.: {sensor.data.pressure%.f2} HU, Pres.: {sensor.data.humidity%.f2} hPa."
 
             print(output)
 
-    except KeyboardInterupt:
+    except KeyboardInterrupt:
         pass
 
 
