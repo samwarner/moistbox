@@ -1,6 +1,7 @@
 import time
 import datetime
 import bme680
+import maya
 
 
 def main():
@@ -18,12 +19,12 @@ def main():
     try:
         while True:
             if sensor.get_sensor_data():
-                n = datetime.fromtimestamp(timestamp, timezone.utc)
+                now = maya.now()
                 t = sensor.data.temperature
                 h = sensor.data.humidity
                 p = sensor.data.pressure
                 output = f"""
-                        {n:10} Temp.: {t:.2f} C, Hum.: {h:.2f} HU, Pres.: {p:.2f} hPa.
+                        {now:10} Temp.: {t:.2f} C, Hum.: {h:.2f} HU, Pres.: {p:.2f} hPa.
                         """
 
             print(output)
